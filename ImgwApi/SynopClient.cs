@@ -10,13 +10,19 @@ namespace ImgwApi
     public class SynopClient
     {
         private readonly HttpClient _client;
-        
-        private SynopClient()
+
+        private SynopClient(HttpClient client)
         {
-            _client = new HttpClient();
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+        }
+
+        private SynopClient() : this(new HttpClient())
+        {
         }
 
         public static SynopClient Create() => new SynopClient();
+
+        public static SynopClient Create(HttpClient client) => new SynopClient(client);
 
         public async Task<IReadOnlyCollection<SynopData>> GetAll()
         {
