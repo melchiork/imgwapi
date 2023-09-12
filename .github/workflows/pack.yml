@@ -2,9 +2,9 @@ name: Create NuGet package
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   create-package:
@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.X
+        dotnet-version: 6.0.x
     - name: Build with dotnet
       run: dotnet build ImgwApi --configuration Release
     - name: Pack with dotnet
       run: dotnet pack ImgwApi --configuration Release -o Packed --no-build -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg --version-suffix $(echo ${GITHUB_SHA} | cut -c1-8)
     - name: Upload package
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: package
         path: Packed
