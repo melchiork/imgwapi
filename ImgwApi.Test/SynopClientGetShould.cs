@@ -4,6 +4,7 @@
 public class SynopClientGetShould
 {
     private readonly SynopClient _client;
+    
     public SynopClientGetShould()
     {
         _client = SynopClient.Create();

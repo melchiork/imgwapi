@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -26,7 +25,15 @@ namespace ImgwApi
 
         public async Task<IReadOnlyCollection<SynopData>> GetAll()
         {
-            var response = await _client.GetAsync("https://danepubliczne.imgw.pl/api/data/synop/");
+            HttpResponseMessage response;
+            try
+            {
+                response = await _client.GetAsync("https://danepubliczne.imgw.pl/api/data/synop/");
+            }
+            catch (Exception ex)
+            {
+                throw new ApiClientException("Unable to get API response.", ex);
+            }
 
             var text = await response.Content.ReadAsStringAsync();
 

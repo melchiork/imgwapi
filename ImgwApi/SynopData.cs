@@ -6,13 +6,15 @@ namespace ImgwApi
     public class SynopData
     {
         [JsonConstructor]
-        public SynopData(int stationId, string stationName, DateTime dateOfMeasurement, int hourOfMeasurement, decimal temparatureC, decimal windSpeed, decimal windDirection, decimal relativeHumidity, decimal rainfall, decimal? pressure)
+        public SynopData(int stationId, string stationName, DateTime dateOfMeasurement, int hourOfMeasurement,
+            decimal temperatureC, decimal windSpeed, decimal windDirection, decimal relativeHumidity, decimal rainfall,
+            decimal? pressure)
         {
             StationId = stationId;
             StationName = stationName;
             DateOfMeasurement = dateOfMeasurement;
             HourOfMeasurement = hourOfMeasurement;
-            TemparatureC = temparatureC;
+            TemperatureC = temperatureC;
             WindSpeed = windSpeed;
             WindDirection = windDirection;
             RelativeHumidity = relativeHumidity;
@@ -33,10 +35,11 @@ namespace ImgwApi
         [JsonProperty("godzina_pomiaru")]
         public int HourOfMeasurement { get; }
 
+        [JsonIgnore]
         public DateTime DateTimeOfMeasurement { get; }
 
         [JsonProperty("temperatura")]
-        public decimal TemparatureC { get; }
+        public decimal TemperatureC { get; }
 
         [JsonProperty("predkosc_wiatru")]
         public decimal WindSpeed { get; }
