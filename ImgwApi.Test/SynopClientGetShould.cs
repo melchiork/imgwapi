@@ -11,10 +11,18 @@ public class SynopClientGetShould
     }
 
     [Fact]
-    public async Task ReadAllCurrentData()
+    public async Task GetAllCurrentData()
     {
         var result = await _client.GetAll();
 
         result.Should().NotBeNullOrEmpty();
+    }
+
+    [Fact]
+    public async Task GetDataForStation()
+    {
+        var result = await _client.Get(SynopStations.Warszawa);
+
+        result.StationId.Should().Be((int)SynopStations.Warszawa);
     }
 }

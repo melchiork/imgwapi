@@ -41,5 +41,24 @@ namespace ImgwApi
 
             return result;
         }
+
+        public async Task<SynopData> Get(SynopStations station)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                response = await _client.GetAsync($"https://danepubliczne.imgw.pl/api/data/synop/{(int)station}");
+            }
+            catch (Exception ex)
+            {
+                throw new ApiClientException("Unable to get API response.", ex);
+            }
+
+            var text = await response.Content.ReadAsStringAsync();
+
+            var result = JsonConvert.DeserializeObject<SynopData>(text);
+
+            return result;
+        }
     }
 }
