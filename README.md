@@ -15,9 +15,11 @@ var result = await _client.GetAllAsync();
 
 var avgTemp = result.Select(x => x.TemperatureC).Average();
 
-//...
-
+//read for single station
 var resultForWarsaw = await _client.GetAsync(SynopStations.Warszawa);
+
+//create Api Client with external HttpClient
+var client = SynopClient.Create(new HttpClient());
 ```
 
 ## License

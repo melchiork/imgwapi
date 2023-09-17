@@ -15,5 +15,4 @@ public class SynopDataShould
 
         synopData.DateTimeOfMeasurement.Should().Be(expectedDate);
     }
-
 }
