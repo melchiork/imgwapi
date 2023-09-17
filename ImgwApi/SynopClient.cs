@@ -8,6 +8,8 @@ namespace ImgwApi
 {
     public class SynopClient
     {
+        private const string ApiAddress = "https://danepubliczne.imgw.pl/api/data/synop/";
+
         private readonly HttpClient _client;
 
         private SynopClient(HttpClient client)
@@ -23,12 +25,12 @@ namespace ImgwApi
 
         public static SynopClient Create(HttpClient client) => new SynopClient(client);
 
-        public async Task<IReadOnlyCollection<SynopData>> GetAll()
+        public async Task<IReadOnlyCollection<SynopData>> GetAllAsync()
         {
             HttpResponseMessage response;
             try
             {
-                response = await _client.GetAsync("https://danepubliczne.imgw.pl/api/data/synop/");
+                response = await _client.GetAsync(ApiAddress);
             }
             catch (Exception ex)
             {
@@ -42,12 +44,12 @@ namespace ImgwApi
             return result;
         }
 
-        public async Task<SynopData> Get(SynopStations station)
+        public async Task<SynopData> GetAsync(SynopStations station)
         {
             HttpResponseMessage response;
             try
             {
-                response = await _client.GetAsync($"https://danepubliczne.imgw.pl/api/data/synop/{(int)station}");
+                response = await _client.GetAsync($"{ApiAddress}id/{(int)station}");
             }
             catch (Exception ex)
             {
