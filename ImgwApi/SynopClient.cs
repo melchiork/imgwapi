@@ -32,23 +32,13 @@ namespace ImgwApi
         /// <exception cref="JsonSerializationException"></exception>
         public async Task<IReadOnlyCollection<SynopData>> GetAllAsync()
         {
-            HttpResponseMessage response;
-            try
-            {
-                response = await _client.GetAsync(ApiAddress);
-            }
-            catch (Exception ex)
-            {
-                throw new ApiClientException("Unable to get API response.", ex);
-            }
-
-            var text = await response.Content.ReadAsStringAsync();
+            var text = await CallApi(ApiAddress);
 
             var result = JsonConvert.DeserializeObject<List<SynopData>>(text);
 
             return result;
         }
-
+        
         /// <summary>
         /// Returns data for one station.
         /// </summary>
@@ -56,21 +46,32 @@ namespace ImgwApi
         /// <exception cref="JsonSerializationException"></exception>
         public async Task<SynopData> GetAsync(SynopStations station)
         {
+            var text = await CallApi($"{ApiAddress}id/{(int)station}");
+           
+            var result = JsonConvert.DeserializeObject<SynopData>(text);
+
+            return result;
+        }
+
+        private async Task<string> CallApi(string address)
+        {
             HttpResponseMessage response;
             try
             {
-                response = await _client.GetAsync($"{ApiAddress}id/{(int)station}");
+                response = await _client.GetAsync(address);
             }
             catch (Exception ex)
             {
                 throw new ApiClientException("Unable to get API response.", ex);
             }
 
+            if (response.IsSuccessStatusCode == false)
+            {
+                throw new ApiClientException($"Api returned error code {response.StatusCode}");
+            }
+
             var text = await response.Content.ReadAsStringAsync();
-
-            var result = JsonConvert.DeserializeObject<SynopData>(text);
-
-            return result;
+            return text;
         }
     }
 }

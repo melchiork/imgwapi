@@ -1,14 +1,9 @@
 ﻿namespace ImgwApi.Test;
 
-[Trait("Category","Integration")]
+[Trait("Category", "Integration")]
 public class SynopClientGetShould
 {
-    private readonly SynopClient _client;
-    
-    public SynopClientGetShould()
-    {
-        _client = SynopClient.Create();
-    }
+    private readonly SynopClient _client = SynopClient.Create();
 
     [Fact]
     public async Task GetAllCurrentData()
