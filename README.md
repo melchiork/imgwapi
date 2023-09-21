@@ -1,3 +1,5 @@
+[![NuGet version (ImgwApi)](https://img.shields.io/nuget/v/ImgwApi.svg?style=flat-square)](https://www.nuget.org/packages/ImgwApi/)
+
 # ImgwApi
 .NET API client for IMGW (Instytut Meteorologii i Gospodarki Wodnej) API. This is not an official package nor it is endorsed by IMGW in any way.
 
