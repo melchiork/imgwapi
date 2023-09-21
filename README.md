@@ -12,7 +12,7 @@
 ```csharp
 var client = SynopClient.Create();
 
-//calls IMGW weather api at https://danepubliczne.imgw.pl/api/data/synop/
+//call IMGW weather api at https://danepubliczne.imgw.pl/api/data/synop/
 var result = await _client.GetAllAsync();
 
 var avgTemp = result.Select(x => x.TemperatureC).Average();
@@ -22,6 +22,9 @@ var resultForWarsaw = await _client.GetAsync(SynopStations.Warszawa);
 
 //create Api Client with external HttpClient
 var client = SynopClient.Create(new HttpClient());
+
+//register in DI - there are no public constuctors in SynopClient, only factory methods
+services.AddSingleton<ISynopClient>(serviceProvider => SynopClient.Create())
 ```
 
 ## License

@@ -3,8 +3,14 @@ using Newtonsoft.Json;
 
 namespace ImgwApi
 {
+    /// <summary>
+    /// Data for a single station returned from the API.
+    /// </summary>
     public class SynopData
     {
+        /// <summary>
+        /// Constructor using wile deserializing API response.
+        /// </summary>
         [JsonConstructor]
         public SynopData(int stationId, string stationName, DateTime dateOfMeasurement, int hourOfMeasurement,
             decimal temperatureC, decimal windSpeed, decimal windDirection, decimal relativeHumidity, decimal rainfall,
@@ -59,6 +65,9 @@ namespace ImgwApi
         [JsonProperty("temperatura")]
         public decimal TemperatureC { get; }
 
+        /// <summary>
+        /// Wind speed
+        /// </summary>
         [JsonProperty("predkosc_wiatru")]
         public decimal WindSpeed { get; }
 
@@ -68,14 +77,20 @@ namespace ImgwApi
         [JsonProperty("kierunek_wiatru")]
         public decimal WindDirection { get; }
 
+        /// <summary>
+        /// Relative humidity
+        /// </summary>
         [JsonProperty("wilgotnosc_wzgledna")]
         public decimal RelativeHumidity { get; }
 
+        /// <summary>
+        /// Sum of rainfall
+        /// </summary>
         [JsonProperty("suma_opadu")]
         public decimal Rainfall { get; }
 
         /// <summary>
-        /// Pressure in hPa. Not available for all stations.
+        /// Pressure in hPa. Not available for every station.
         /// </summary>
         [JsonProperty("cisnienie")]
         public decimal? Pressure { get; }
