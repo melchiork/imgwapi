@@ -1,7 +1,11 @@
 ﻿using System.ComponentModel;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace ImgwApi
 {
+    /// <summary>
+    /// All supported stations for weather data.
+    /// </summary>
     public enum SynopStations
     {
         [Description("Białystok")]

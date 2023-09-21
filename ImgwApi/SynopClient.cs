@@ -6,7 +6,10 @@ using Newtonsoft.Json;
 
 namespace ImgwApi
 {
-    public class SynopClient
+    /// <summary>
+    /// <inheritdoc cref="ISynopClient"/>
+    /// </summary>
+    public class SynopClient : ISynopClient
     {
         private const string ApiAddress = "https://danepubliczne.imgw.pl/api/data/synop/";
 
@@ -21,12 +24,18 @@ namespace ImgwApi
         {
         }
 
+        /// <summary>
+        /// Creates instance with new <see cref="HttpClient"/>
+        /// </summary>
         public static SynopClient Create() => new SynopClient();
 
+        /// <summary>
+        /// Creates instance with provided <see cref="HttpClient"/>
+        /// </summary>
         public static SynopClient Create(HttpClient client) => new SynopClient(client);
 
         /// <summary>
-        /// Returns data for all stations.
+        /// <inheritdoc cref="ISynopClient.GetAllAsync"/>
         /// </summary>
         /// <exception cref="ApiClientException"></exception>
         /// <exception cref="JsonSerializationException"></exception>
@@ -40,7 +49,7 @@ namespace ImgwApi
         }
         
         /// <summary>
-        /// Returns data for one station.
+        /// <inheritdoc cref="ISynopClient.GetAsync"/>
         /// </summary>
         /// <exception cref="ApiClientException"></exception>
         /// <exception cref="JsonSerializationException"></exception>
