@@ -3,7 +3,7 @@ namespace ImgwApi.Test;
 public class SynopClientCreateShould
 {
     [Fact]
-    public void NoParams_ReturnNewInstance()
+    public void ReturnNewInstanceWhenNoParamsCtorIsUsed()
     {
         var client = SynopClient.Create();
 
@@ -11,7 +11,7 @@ public class SynopClientCreateShould
     }
 
     [Fact]
-    public void ClientProvided_ReturnNewInstance()
+    public void ReturnNewInstanceWhenProvidedWithHttpClient()
     {
         var client = SynopClient.Create(new HttpClient());
 
@@ -19,7 +19,7 @@ public class SynopClientCreateShould
     }
 
     [Fact]
-    public void NullClientProvided_ReturnNewInstance()
+    public void ThrowExceptionWhenNullIsProvided()
     {
         Action act = () => SynopClient.Create(null);
 
