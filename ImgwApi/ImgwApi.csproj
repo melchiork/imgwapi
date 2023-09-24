@@ -10,7 +10,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Version>0.6.0-beta</Version>
+    <Version>0.7.0-beta</Version>
     <Authors>melchiork</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>imgw;weather</PackageTags>
