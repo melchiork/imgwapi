@@ -29,7 +29,7 @@ services.AddSingleton<ISynopClient>(serviceProvider => SynopClient.Create())
 //create hydro client
 var hydroClient = HydroClient.Create();
 
-//call IMGW weather api at https://danepubliczne.imgw.pl/api/data/hydro/
+//call IMGW hydro api at https://danepubliczne.imgw.pl/api/data/hydro/
 var result = await hydroClient.GetAllAsync();
 ```
 
