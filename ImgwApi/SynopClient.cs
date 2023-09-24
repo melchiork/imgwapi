@@ -9,15 +9,12 @@ namespace ImgwApi
     /// <summary>
     /// <inheritdoc cref="ISynopClient"/>
     /// </summary>
-    public class SynopClient : ISynopClient
+    public class SynopClient : BaseImgwApiClient, ISynopClient
     {
         private const string ApiAddress = "https://danepubliczne.imgw.pl/api/data/synop/";
 
-        private readonly HttpClient _client;
-
-        private SynopClient(HttpClient client)
+        private SynopClient(HttpClient client) : base(client)
         {
-            _client = client ?? throw new ArgumentNullException(nameof(client));
         }
 
         private SynopClient() : this(new HttpClient())
@@ -41,7 +38,7 @@ namespace ImgwApi
         /// <exception cref="JsonSerializationException"></exception>
         public async Task<IReadOnlyCollection<SynopData>> GetAllAsync()
         {
-            var text = await CallApi(ApiAddress);
+            var text = await Get(ApiAddress);
 
             var result = JsonConvert.DeserializeObject<List<SynopData>>(text);
 
@@ -55,32 +52,11 @@ namespace ImgwApi
         /// <exception cref="JsonSerializationException"></exception>
         public async Task<SynopData> GetAsync(SynopStations station)
         {
-            var text = await CallApi($"{ApiAddress}id/{(int)station}");
+            var text = await Get($"{ApiAddress}id/{(int)station}");
            
             var result = JsonConvert.DeserializeObject<SynopData>(text);
 
             return result;
-        }
-
-        private async Task<string> CallApi(string address)
-        {
-            HttpResponseMessage response;
-            try
-            {
-                response = await _client.GetAsync(address);
-            }
-            catch (Exception ex)
-            {
-                throw new ApiClientException("Unable to get API response.", ex);
-            }
-
-            if (response.IsSuccessStatusCode == false)
-            {
-                throw new ApiClientException($"Api returned error code {response.StatusCode}");
-            }
-
-            var text = await response.Content.ReadAsStringAsync();
-            return text;
         }
     }
 }

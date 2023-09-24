@@ -6,15 +6,14 @@ using Newtonsoft.Json;
 namespace ImgwApi
 {
     /// <summary>
-    /// Client for hydro data from IMGW.
+    /// <inheritdoc cref="IHydroClient"/>
     /// </summary>
-    public class HydroClient
+    public class HydroClient : BaseImgwApiClient, IHydroClient
     {
-        private readonly HttpClient _httpClient;
-
-        private HydroClient(HttpClient httpClient)
+        private const string ApiAddress = "https://danepubliczne.imgw.pl/api/data/hydro/";
+        
+        private HydroClient(HttpClient httpClient) : base(httpClient)
         {
-            _httpClient = httpClient;
         }
 
         /// <summary>
@@ -23,19 +22,20 @@ namespace ImgwApi
         public static HydroClient Create() => new HydroClient(new HttpClient());
 
         /// <summary>
-        /// TODO
+        /// Creates new instance of <see cref="HydroClient"/> using provided instance of <see cref="HttpClient"/>
         /// </summary>
-        /// <returns></returns>
+        public static HydroClient Create(HttpClient httpClient) => new HydroClient(httpClient);
+
+        /// <summary>
+        /// <inheritdoc cref="IHydroClient.GetAll"/>
+        /// </summary>
         public async Task<IReadOnlyCollection<HydroData>> GetAll()
         {
-            var result = await _httpClient.GetAsync("https://danepubliczne.imgw.pl/api/data/hydro/");
+            var text = await Get(ApiAddress);
 
-            var data = await result.Content.ReadAsStringAsync();
-
-            var deserialized = JsonConvert.DeserializeObject<List<HydroData>>(data);
+            var deserialized = JsonConvert.DeserializeObject<List<HydroData>>(text);
 
             return deserialized;
         }
-
     }
 }
