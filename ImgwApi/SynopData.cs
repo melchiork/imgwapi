@@ -54,7 +54,7 @@ namespace ImgwApi
         public int HourOfMeasurement { get; }
 
         /// <summary>
-        /// DAte and Time of measurement as calculated by the library, for raw data see <see cref="DateOfMeasurement"/> and <see cref="HourOfMeasurement"/>
+        /// Date and Time of measurement as calculated by the library, for raw data see <see cref="DateOfMeasurement"/> and <see cref="HourOfMeasurement"/>
         /// </summary>
         [JsonIgnore]
         public DateTime DateTimeOfMeasurement { get; }

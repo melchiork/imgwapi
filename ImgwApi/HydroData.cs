@@ -12,9 +12,11 @@ namespace ImgwApi
         /// Constructs new instance of <see cref="HydroData"/>. Used for deserialization.
         /// </summary>
         [JsonConstructor]
-        public HydroData(int stationId, string stationName, string riverName, string voivodeship, int waterLevel,
-            DateTime waterLevelMeasurementDate, decimal? waterTemperatureC, DateTime? waterTemperatureMeasurementDate,
-            bool? icePhenomenon, DateTime? icePhenomenonMeasurementDate)
+        public HydroData(int stationId, string stationName, string riverName, string voivodeship, int? waterLevel,
+            DateTime? waterLevelMeasurementDate, decimal? waterTemperatureC, DateTime? waterTemperatureMeasurementDate,
+            int? icePhenomenon, DateTime? icePhenomenonMeasurementDate,
+            int? overgrowthPhenomenon,
+            DateTime? overgrowthPhenomenonMeasurementDate)
         {
             StationId = stationId;
             StationName = stationName;
@@ -26,6 +28,8 @@ namespace ImgwApi
             WaterTemperatureMeasurementDate = waterTemperatureMeasurementDate;
             IcePhenomenon = icePhenomenon;
             IcePhenomenonMeasurementDate = icePhenomenonMeasurementDate;
+            OvergrowthPhenomenon = overgrowthPhenomenon;
+            OvergrowthPhenomenonMeasurementDate = overgrowthPhenomenonMeasurementDate;
         }
 
         /// <summary>
@@ -56,13 +60,13 @@ namespace ImgwApi
         /// Water level in centimeters.
         /// </summary>
         [JsonProperty("stan_wody")]
-        public int WaterLevel { get; }
+        public int? WaterLevel { get; }
 
         /// <summary>
         /// Date and time of <see cref="WaterLevel"/> measurement.
         /// </summary>
         [JsonProperty("stan_wody_data_pomiaru")]
-        public DateTime WaterLevelMeasurementDate { get; }
+        public DateTime? WaterLevelMeasurementDate { get; }
 
         /// <summary>
         /// Water temperature in Celsius.
@@ -77,10 +81,10 @@ namespace ImgwApi
         public DateTime? WaterTemperatureMeasurementDate { get; }
 
         /// <summary>
-        /// Does ice phenomenon occur.
+        /// TODO ?
         /// </summary>
         [JsonProperty("zjawisko_lodowe")]
-        public bool? IcePhenomenon { get; }
+        public int? IcePhenomenon { get; }
 
         /// <summary>
         /// Date and time of <see cref="IcePhenomenon"/> measurement.
@@ -89,10 +93,10 @@ namespace ImgwApi
         public DateTime? IcePhenomenonMeasurementDate { get; }
 
         /// <summary>
-        /// Does overgrowth phenomenon occur.
+        /// TODO ?
         /// </summary>
         [JsonProperty("zjawisko_zarastania")]
-        public bool? OvergrowthPhenomenon { get; }
+        public int?OvergrowthPhenomenon { get; }
 
         /// <summary>
         /// Date and time of <see cref="OvergrowthPhenomenon"/> measurement.
