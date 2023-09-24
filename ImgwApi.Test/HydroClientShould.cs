@@ -7,7 +7,7 @@ public class HydroClientShould
     [Fact]
     public async Task GetAll()
     {
-        var result = await _sut.GetAll();
+        var result = await _sut.GetAllAsync();
 
         result.Should().NotBeNull();
         result.Should().NotBeEmpty();

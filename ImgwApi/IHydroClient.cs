@@ -11,6 +11,6 @@ namespace ImgwApi
         /// <summary>
         /// Gets all hydro stations measurements.
         /// </summary>
-        Task<IReadOnlyCollection<HydroData>> GetAll();
+        Task<IReadOnlyCollection<HydroData>> GetAllAsync();
     }
 }

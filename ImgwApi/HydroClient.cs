@@ -27,9 +27,9 @@ namespace ImgwApi
         public static HydroClient Create(HttpClient httpClient) => new HydroClient(httpClient);
 
         /// <summary>
-        /// <inheritdoc cref="IHydroClient.GetAll"/>
+        /// <inheritdoc cref="IHydroClient.GetAllAsync"/>
         /// </summary>
-        public async Task<IReadOnlyCollection<HydroData>> GetAll()
+        public async Task<IReadOnlyCollection<HydroData>> GetAllAsync()
         {
             var text = await Get(ApiAddress);
 
