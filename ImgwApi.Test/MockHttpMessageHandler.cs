@@ -13,6 +13,12 @@ internal class MockHttpMessageHandler : HttpMessageHandler
         _content = content;
     }
 
+    public MockHttpMessageHandler(string fileName)
+    {
+        _statusCode = HttpStatusCode.OK;
+        _content = File.ReadAllText(fileName);
+    }
+
     protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
         CancellationToken cancellationToken)
     {
