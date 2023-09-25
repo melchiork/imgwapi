@@ -1,0 +1,12 @@
+{
+  "id_stacji": "12235",
+  "stacja": "Chojnice",
+  "data_pomiaru": "2023-09-25",
+  "godzina_pomiaru": "18",
+  "temperatura": "16.5",
+  "predkosc_wiatru": "3",
+  "kierunek_wiatru": "110",
+  "wilgotnosc_wzgledna": "70.5",
+  "suma_opadu": "0",
+  "cisnienie": "1027.8"
+}
