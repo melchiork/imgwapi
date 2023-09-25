@@ -1,4 +1,4 @@
-﻿namespace ImgwApi.Test;
+﻿namespace ImgwApi.Test.Synop;
 
 [Trait("Category", "Integration")]
 public class SynopClientGetShould

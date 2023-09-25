@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace ImgwApi.Test;
+namespace ImgwApi.Test.Synop;
 
 public class SynopClientGetWithErrorShould
 {

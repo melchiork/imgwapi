@@ -1,4 +1,4 @@
-namespace ImgwApi.Test;
+namespace ImgwApi.Test.Synop;
 
 public class SynopClientCreateShould
 {
