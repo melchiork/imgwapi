@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace ImgwApi.Test;
+namespace ImgwApi.Test.Hydro;
 
 public class HydroClientGetWithErrorShould
 {
