@@ -17,6 +17,7 @@ namespace ImgwApi
             decimal? pressure)
         {
             StationId = stationId;
+            Station = Enum.IsDefined(typeof(SynopStation), stationId) ? (SynopStation)stationId : (SynopStation?)null;
             StationName = stationName;
             DateOfMeasurement = dateOfMeasurement;
             HourOfMeasurement = hourOfMeasurement;
@@ -30,10 +31,16 @@ namespace ImgwApi
         }
 
         /// <summary>
-        /// Numerical station id. should match one from <see cref="SynopStations"/>
+        /// Numerical station id. should match one from <see cref="SynopStation"/>
         /// </summary>
         [JsonProperty("id_stacji")]
         public int StationId { get; }
+
+        /// <summary>
+        /// Id <see cref="StationId"/> mapped to <seealso cref="SynopStation"/>, null when no enum match.
+        /// </summary>
+        [JsonIgnore]
+        public SynopStation? Station { get; }
 
         /// <summary>
         /// Human readable station name

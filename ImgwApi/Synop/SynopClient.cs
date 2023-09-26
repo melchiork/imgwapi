@@ -49,7 +49,7 @@ namespace ImgwApi
         /// </summary>
         /// <exception cref="ApiClientException"></exception>
         /// <exception cref="JsonSerializationException"></exception>
-        public async Task<SynopData> GetAsync(SynopStations station)
+        public async Task<SynopData> GetAsync(SynopStation station)
         {
             var text = await Get($"{ApiAddress}id/{(int)station}");
            

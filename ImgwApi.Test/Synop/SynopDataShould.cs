@@ -15,4 +15,15 @@ public class SynopDataShould
 
         synopData.DateTimeOfMeasurement.Should().Be(expectedDate);
     }
+
+    [Theory]
+    [InlineData(12600, SynopStation.BielskoBiala)]
+    [InlineData(12560, SynopStation.Katowice)]
+    [InlineData(123, null)]
+    public void MapSynopStationWhenConstructed(int id, SynopStation? expected)
+    {
+        var synopData = new SynopData(id, "a", DateTime.UtcNow, 0, 2, 10, 2, 3, 4, null);
+
+        synopData.Station.Should().Be(expected);
+    }
 }

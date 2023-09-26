@@ -6,7 +6,7 @@ namespace ImgwApi
     /// <summary>
     /// All supported stations for weather data.
     /// </summary>
-    public enum SynopStations
+    public enum SynopStation
     {
         [Description("Białystok")]
         Bialystok = 12295,

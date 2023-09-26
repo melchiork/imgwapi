@@ -27,7 +27,7 @@ public class SynopClientGetWithErrorShould
     {
         var client = SynopClient.Create(new HttpClient(new MockHttpMessageHandler(code)));
 
-        var act = async () => await client.GetAsync(SynopStations.Gdansk);
+        var act = async () => await client.GetAsync(SynopStation.Gdansk);
 
         await act.Should().ThrowAsync<ApiClientException>().WithMessage($"Api returned error code {code}");
     }
