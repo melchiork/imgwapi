@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ImgwApi
 {
@@ -11,6 +12,8 @@ namespace ImgwApi
         /// <summary>
         /// Gets all hydro stations measurements.
         /// </summary>
+        /// <exception cref="ApiClientException"></exception>
+        /// <exception cref="JsonException"></exception>
         Task<IReadOnlyCollection<HydroData>> GetAllAsync();
     }
 }

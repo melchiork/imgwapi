@@ -16,8 +16,8 @@ public class SynopClientWithoutMockGetShould
     [Fact]
     public async Task GetAsync()
     {
-        var result = await _client.GetAsync(SynopStations.Chojnice);
+        var result = await _client.GetAsync(SynopStation.Chojnice);
 
-        result.StationId.Should().Be((int)SynopStations.Chojnice);
+        result.StationId.Should().Be((int)SynopStation.Chojnice);
     }
 }
