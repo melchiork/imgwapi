@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ImgwApi
 {
@@ -11,11 +12,15 @@ namespace ImgwApi
         /// <summary>
         /// Returns data for all stations.
         /// </summary>
+        /// <exception cref="ApiClientException"></exception>
+        /// <exception cref="JsonException"></exception>
         Task<IReadOnlyCollection<SynopData>> GetAllAsync();
 
         /// <summary>
         /// Returns data for one station.
         /// </summary>
-        Task<SynopData> GetAsync(SynopStations station);
+        /// <exception cref="ApiClientException"></exception>
+        /// <exception cref="JsonException"></exception>
+        Task<SynopData> GetAsync(SynopStation station);
     }
 }
