@@ -1,7 +1,7 @@
 [![NuGet version (ImgwApi)](https://img.shields.io/nuget/v/ImgwApi.svg?style=flat-square)](https://www.nuget.org/packages/ImgwApi/)
 
 # ImgwApi
-.NET API client for IMGW (Instytut Meteorologii i Gospodarki Wodnej) API. This is not an official package nor it is endorsed by IMGW in any way.
+.NET API client for IMGW (Instytut Meteorologii i Gospodarki Wodnej) API. This is not an official package nor is it endorsed by IMGW in any way.
 
 ## Usage Restrictions
 * [https://danepubliczne.imgw.pl/](https://danepubliczne.imgw.pl/)
@@ -34,4 +34,4 @@ var result = await hydroClient.GetAllAsync();
 ```
 
 ## License
-This package (but not the data, see Usage Restrictions above) comes with MIT license.
+This package (but not the data, see Usage Restrictions above) comes with the MIT license.
