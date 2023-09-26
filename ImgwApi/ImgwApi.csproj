@@ -10,10 +10,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Version>0.9.0</Version>
+    <Version>1.0.0</Version>
     <Authors>melchiork</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>imgw;weather</PackageTags>
+    <PackageTags>imgw;weather;hydro</PackageTags>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
